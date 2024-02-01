@@ -1,0 +1,74 @@
+{
+  "name": "identitynow-rule-restriction",
+  "displayName": "IdentityNow Rule Restriction",
+  "version": "1.0.1",
+  "description": "A Visual Studio Code extension that flags and notifies disallowed keywords.",
+  "icon": "logo.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "keywords": [
+    "VS Code",
+    "Extension",
+    "Code Restriction"
+  ],
+  "publisher": "AnimeshTarodia",
+  "license": "MIT",
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.flagCode",
+        "title": "Flag Code"
+      }
+    ],
+    "languages": [
+      {
+        "id": "plaintext",
+        "extensions": [
+          ".myextension"
+        ]
+      },
+      {
+        "id": "bsh",
+        "extensions": [
+          ".bsh"
+        ]
+      },
+      {
+        "id": "java",
+        "extensions": [
+          ".java"
+        ]
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Code Restriction Extension",
+      "properties": {
+        "codeRestriction.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the code restriction extension."
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "onCommand:extension.flagCode",
+    "onLanguage:plaintext",
+    "onLanguage:bsh",
+    "onLanguage:java",
+    "onText:import sailpoint."
+  ],
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "typescript": "^5.3.3",
+    "vscode": "^1.1.37"
+  }
+}
