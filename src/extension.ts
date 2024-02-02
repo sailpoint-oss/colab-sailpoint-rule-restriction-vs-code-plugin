@@ -65,9 +65,10 @@ const flaggedKeywords = [
 ];
 
 
-
 const decorationType = vscode.window.createTextEditorDecorationType({
     backgroundColor: 'rgba(255, 0, 0, 0.3)', // Red color with some transparency
+    overviewRulerColor: 'rgba(255, 0, 0, 0.8)', // Red color for the minimap
+    overviewRulerLane: vscode.OverviewRulerLane.Right, // Show on the right side of the minimap
 });
 
 function provideDocumentHighlights(document: vscode.TextDocument, flaggedKeyword: string): vscode.DocumentHighlight[] {
@@ -147,7 +148,7 @@ vscode.workspace.onDidChangeTextDocument(event => {
         const keywordRegex = new RegExp(`\\b${keyword}\\b`, 'gi');
         if (keywordRegex.test(changedText)) {
             // Show a notification for the disallowed keyword
-            vscode.window.showInformationMessage(`Keyword "${keyword}" is disallowed in SailPoint IdenitityNow Rules.`);
+            vscode.window.showInformationMessage(`Keyword "${keyword}" is disallowed in SailPoint IdentityNow Rules.`);
         }
     });
 
@@ -171,7 +172,6 @@ export function activate(context: vscode.ExtensionContext) {
         }
     }));
 
-    // Additional subscriptions can be pushed into the context.subscriptions array
     context.subscriptions.push(
         // Example: vscode.commands.registerCommand('extension.sayHello', () => {
         //     vscode.window.showInformationMessage('Hello, World!');
