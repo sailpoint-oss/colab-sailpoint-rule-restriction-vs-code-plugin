@@ -1,7 +1,7 @@
 {
   "name": "identitynow-rule-restriction",
   "displayName": "IdentityNow Rule Restriction",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Visual Studio Code extension that flags and notifies disallowed keywords.",
   "icon": "logo.png",
   "engines": {
@@ -21,12 +21,6 @@
   },
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "extension.flagCode",
-        "title": "Flag Code"
-      }
-    ],
     "languages": [
       {
         "id": "plaintext",
@@ -60,7 +54,6 @@
     }
   },
   "activationEvents": [
-    "onCommand:extension.flagCode",
     "onLanguage:plaintext",
     "onLanguage:bsh",
     "onLanguage:java",
